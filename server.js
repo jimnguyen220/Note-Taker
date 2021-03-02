@@ -3,7 +3,11 @@
 // Series of npm packages that we will use to give our server useful functionality
 // ==============================================================================
 
-var express = require("express");
+const express = require("express");
+const path = require('path');
+const fs = require('fs');
+
+
 
 // ==============================================================================
 // EXPRESS CONFIGURATION
@@ -11,20 +15,26 @@ var express = require("express");
 // ==============================================================================
 
 // Tells node that we are creating an "express" server
-var app = express();
+const app = express();
 
 // Sets an initial port.
-var PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8080;
 
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 //setup public folder for images, js, css
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 
 //ROUTES
+
+app.get('/notes', (req, res) => 
+    res.redirect('notes.html')
+);
+
+
 
 //API 
 
