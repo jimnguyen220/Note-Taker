@@ -4,8 +4,7 @@
 // ==============================================================================
 
 const express = require("express");
-const path = require('path');
-const fs = require('fs');
+
 
 
 
@@ -25,21 +24,13 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 //setup public folder for images, js, css
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static('public'));
 
 
 //ROUTES
 
-app.get('/notes', (req, res) => 
-    res.redirect('notes.html')
-);
-
-
-
-//API 
-
-
-// HTML 
+require("./routes/apiRoutes")(app);
+require("./routes/htmlRoutes")(app);
 
 
 
