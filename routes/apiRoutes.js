@@ -10,5 +10,11 @@ module.exports = function(app) {
         res.json(database);
     })
 
-    
+//     app.post("/api/notes", function (req, res) {
+//         const newNote = req.body
+//         fs.writeFile(database, newNote, (err, res) =>{
+//             if (err) throw err;
+//             console.log(res);
+//         })
+//     })
 }
