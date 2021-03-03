@@ -10,11 +10,18 @@ module.exports = function(app) {
         res.json(database);
     })
 
-//     app.post("/api/notes", function (req, res) {
-//         const newNote = req.body
-//         fs.writeFile(database, newNote, (err, res) =>{
-//             if (err) throw err;
-//             console.log(res);
-//         })
-//     })
+    app.post("/api/notes", function (req, res) {
+        const newNote = req.body
+        database.push(newNote);
+        console.log("Note Saved!")
+        res.end();
+        // fs.writeFile(database, newNote, (err, res) =>{
+        //     if (err) throw err;
+        //     console.log(res);
+        // })
+    })
+
+    app.delete("api/notes/:id", function (req, res) {
+        const noteId = req.params.id
+    })
 }
