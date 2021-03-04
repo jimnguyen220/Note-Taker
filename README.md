@@ -4,7 +4,7 @@
 
 For this project, we are given the frontend code and are tasked with creating the backend.  The backend will use express to save and retrieve data from a JSON file.  The purpose of the application is to write, save and delete notes.
 
-![index.html](./public/assets/images/index.png)
+![note-taker](./public/assets/images/note-taker.gif)
 
 * The following HTML routes should be created:
 
