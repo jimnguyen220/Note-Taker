@@ -23,7 +23,6 @@ module.exports = function(app) {
             console.log(res);
             
         })
-        
         res.send({redirect: '/notes'});
     })
  
@@ -38,7 +37,7 @@ module.exports = function(app) {
             if (err) throw err;
             console.log(res);
         })
-
+        res.json(result);
        
-    })
+    });
 };
