@@ -24,4 +24,5 @@ For this project, we are given the frontend code and are tasked with creating th
 
   This application will also need to be deployed using Heroku 
 
-  ## Heroku
+
+## Heroku

@@ -1,11 +1,15 @@
 //links data and adding fs
-const database = require('../db/db.json');
+let database = require('../db/db.json');
 const fs = require('fs');
 
 //Routes
 
 module.exports = function(app) {
-    let lastID = database[database.length-1].id;
+    let lastID = 0;
+    
+    if (database.length > 0) {
+        lastID = database[database.length -1].id;
+    };
 
     app.get('/api/notes', function (req, res) {
         res.json(database);
@@ -14,14 +18,14 @@ module.exports = function(app) {
 
     app.post("/api/notes/", function (req, res) {
         const newNote = req.body
-        console.log(newNote)
         newNote["id"] = lastID + 1;
+        lastID = newNote["id"];
         database.push(newNote);
     
-        fs.writeFile('./db/db.json', JSON.stringify(database), (err, res) =>{
+        fs.writeFile('./db/db.json', JSON.stringify(database), (err) =>{
             if (err) throw err;
-            console.log(res);
-            
+            console.log("Note Saved!")
+  
         })
         res.send({redirect: '/notes'});
     })
@@ -29,14 +33,14 @@ module.exports = function(app) {
     app.delete("/api/notes/:id", function (req, res) {
         const noteId = req.params.id;
        // filter database data 
-       const result = database.filter(note => note.id != noteId);
+        const result = database.filter(note => note.id != noteId);
        
-
         // write filtered data back to database 
-        fs.writeFile('./db/db.json', JSON.stringify(result), (err, res) =>{
+        fs.writeFile('./db/db.json', JSON.stringify(result), (err) =>{
             if (err) throw err;
-            console.log(res);
+            console.log("Note Deleted!");
         })
+        database = result;
         res.json(result);
        
     });
