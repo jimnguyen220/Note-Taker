@@ -6,8 +6,6 @@
 const express = require("express");
 
 
-
-
 // ==============================================================================
 // EXPRESS CONFIGURATION
 // This sets up the basic properties for our express server
@@ -17,7 +15,7 @@ const express = require("express");
 const app = express();
 
 // Sets an initial port.
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 5000;
 
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
